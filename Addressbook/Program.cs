@@ -1,2 +1,29 @@
 ﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+
+
+
+using System;
+
+
+namespace Addressbook
+{
+    class program
+    {
+        static void Main(string[] args)
+        {
+
+            CreateContacts contact1 = new CreateContacts();
+            contact1.ContactDetails();
+
+        }
+
+    }
+}
+
+
+         
+        
+
+    
+
+    
