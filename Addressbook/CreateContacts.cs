@@ -13,7 +13,7 @@ namespace Addressbook
         Contact contact = new Contact();
         public void ContactDetails()
         {
-  
+
 
             Console.WriteLine("Enter the First name :");
             contact.firstName = Console.ReadLine();
@@ -31,8 +31,23 @@ namespace Addressbook
             contact.email = Console.ReadLine();
             Console.WriteLine("Enter the Phone Number :");
             contact.phoneNumber = Console.ReadLine();
-        }
+            People.Add(contact);
 
-        
+        }
+        public void addedPerson()
+        {
+            foreach (Contact contact in People)
+            {
+                Console.WriteLine("Name of person : " + contact.firstName + " " + contact.lastName);
+                Console.WriteLine("Address of person is : " + contact.address);
+                Console.WriteLine("City : " + contact.city);
+                Console.WriteLine("State :" + contact.state);
+                Console.WriteLine("Zip :" + contact.zip);
+                Console.WriteLine("Email of person : " + contact.email);
+                Console.WriteLine("Phone Number of person : " + contact.phoneNumber);
+
+
+            }
+        }
     }
 }
