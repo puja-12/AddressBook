@@ -9,8 +9,8 @@ namespace Addressbook
     public class CreateContacts
     {
 
-       /* public List<Contact> People = new List<Contact>();
-        Contact contact = new Contact();*/
+        public List<Contact> People = new List<Contact>();
+        Contact contact = new Contact();
         public void ContactDetails()
         {
   
