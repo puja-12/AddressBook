@@ -15,7 +15,8 @@ namespace Addressbook
             CreateContacts contact1 = new CreateContacts();
             while (true)
             {
-                Console.WriteLine("Enter the option : \n1)Add Contact \n2)added contact\n3)edit contacts");
+                Console.WriteLine("Enter the option : \n1)Add Contact \n2)added contact\n3)edit contacts\n4)remove contact" +
+                    "");
                 int option = Convert.ToInt32(Console.ReadLine());
                 switch (option)
                 {
@@ -27,6 +28,9 @@ namespace Addressbook
                         break;
                     case 3:
                         contact1.edit();
+                        break;
+                    case 4:
+                        contact1.removeContact();
                         break;
                     default:
                         Console.WriteLine("Please choose correct option");
