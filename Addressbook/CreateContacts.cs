@@ -139,6 +139,15 @@ namespace Addressbook
             }
 
         }
+        public void AddMultipleContacts(int n)
+        {
+            while (n > 0)
+            {
+                Console.WriteLine("enter details:");
+                ContactDetails();
+                n--;
+            }
+        }
     }
 }
 
