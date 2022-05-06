@@ -10,9 +10,10 @@ namespace Addressbook
     {
 
         public List<Contact> People = new List<Contact>();
-        Contact contact = new Contact();
+        public Dictionary<string, List<Contact>> dict = new Dictionary<string, List<Contact>>();
         public void ContactDetails()
         {
+            Contact contact = new Contact();
 
 
             Console.WriteLine("Enter the First name :");
@@ -33,19 +34,6 @@ namespace Addressbook
             contact.phoneNumber = Console.ReadLine();
             People.Add(contact);
 
-        }
-        public void addedPerson()
-        {
-            foreach (Contact contact in People)
-            {
-                Console.WriteLine("Name of person : " + contact.firstName + " " + contact.lastName);
-                Console.WriteLine("Address of person is : " + contact.address);
-                Console.WriteLine("City : " + contact.city);
-                Console.WriteLine("State :" + contact.state);
-                Console.WriteLine("Zip :" + contact.zip);
-                Console.WriteLine("Email of person : " + contact.email);
-                Console.WriteLine("Phone Number of person : " + contact.phoneNumber);
-            }
         }
 
         public void edit()
@@ -148,9 +136,109 @@ namespace Addressbook
                 n--;
             }
         }
+
+        public void Adduniquecontacts()
+        {
+            Console.WriteLine("Enter the Firstname in your contactlist");
+            string name = Console.ReadLine();
+            foreach (var data in People)
+            {
+                if (People.Contains(data))
+                {
+                    if (data.firstName == name)
+                    {
+                        Console.WriteLine("This contact exists please enter an unique name to store this data");
+                        string uniquename = Console.ReadLine();
+                        if (dict.ContainsKey(uniquename))
+                        {
+                            Console.WriteLine("This unique name already exists");
+                        }
+                        dict.Add(uniquename, People);
+                        return;
+                    }
+                }
+            }
+            Console.WriteLine("This contactlist doesn't exist, please creat a contactlist");
+            return;
+
+        }
+
+        public void DisplayUniqueContacts()
+        {
+            Console.WriteLine("Enter the Uniquename of your contacts");
+            string name = Console.ReadLine();
+
+
+            foreach (var contacts in dict)
+            {
+                if (contacts.Key.Contains(name))
+                {
+
+                    foreach (var contact in contacts.Value)
+                    {
+                        Console.WriteLine("The details of " + name + " are \n" + "Name: " + contact.firstName + " " + contact.lastName + "\n" + "Email: " + contact.email + "\n" +
+                            "Phone Number: " + contact.phoneNumber + "\n" + "Address: " + contact.address  + "city: " + contact.city   + "Zip: " + contact.zip + "\n" + "state: " + contact.state);
+                        return;
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("this unique name doesn't exist");
+                }
+
+            }
+            Console.WriteLine("This Uniquelist doesn't exist, please creat a Uniquelist");
+        }
+
+        public void RemoveContact()
+        {
+            Console.WriteLine("Enter the name to search : ");
+            string name = Console.ReadLine();
+            try
+            {
+                foreach (var data in People)
+                {
+                    if (People.Contains(data))
+                    {
+                        if (data.firstName == name)
+                        {
+                            Console.WriteLine("given name contact exists");
+                            People.Remove(data);
+
+                            Console.WriteLine("contact deleted successfully");
+                            return;
+                        }
+                    }
+                }
+                Console.WriteLine("given name contact does not exists");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+        }
+
+
+        public void output()
+        {
+            foreach (var data in People)
+            {
+                Console.WriteLine("Name of the Person : " + data.firstName + " " + data.lastName);
+                Console.WriteLine("Email ID : " + data.email);
+                Console.WriteLine("Mobile Number : " + data.phoneNumber);
+                Console.WriteLine("Address : " + data.address);
+                Console.WriteLine("City : " + data.city);
+                Console.WriteLine("Zip : " + data.zip);
+
+                Console.WriteLine("\n");
+
+            }
+        }
     }
 }
 
-   
+
+
+
 
             
