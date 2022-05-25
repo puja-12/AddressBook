@@ -15,7 +15,7 @@ namespace Addressbook
             CreateContacts contact1 = new CreateContacts();
             while (true)
             {
-                Console.WriteLine("Enter the option : \\n1)Creatingcontacts\n2)Edit Details\n3)Remove Contacts\n4)Adding multiple contacts\n5)Output Details\n6)Adding Unique Contacts\n7)Display unique contacts\n8)Search Person by city or State");
+                Console.WriteLine("Enter the option : \\n1)Creatingcontacts\n2)Edit Details\n3)Remove Contacts\n4)Adding multiple contacts\n5)Output Details\n6)Adding Unique Contacts\n7)Display unique contacts");
                 int option = Convert.ToInt32(Console.ReadLine());
                 switch (option)
                 {
@@ -32,7 +32,7 @@ namespace Addressbook
                     case 4:
                         Console.WriteLine("Please enter number of contacts you want to add : ");
                         int n = Convert.ToInt32(Console.ReadLine());
-                        contact1.Addmultiplepersons(n);
+                        contact1.AddMultipleContacts(n);
                         break;
                 
                     case 5:
@@ -44,12 +44,10 @@ namespace Addressbook
                     case 7:
                         contact1.DisplayUniqueContacts();
                         break;
-                    case 8:
-                        contact1.SearchByCityState();
-                        break;
-
+                    default:
                         Console.WriteLine("Please choose correct option");
                         break;
+                    
 
                 }
             }
