@@ -277,7 +277,7 @@ namespace Addressbook
             {
                 Console.WriteLine(e.Message);
             }
-        } 
+        }
 
 
         public void ContactsBystate_dictionary()
@@ -357,7 +357,27 @@ namespace Addressbook
             }
             Console.WriteLine("There are {0} Persons in {1}:", count, WantedCityOrState);
         }
+        public void SortingDetailsByName()
+        {
+            var newDetails = People.OrderBy(x => x.firstName);
 
+
+            foreach (var data in newDetails)
+            {
+                Console.WriteLine("Name of the Person : " + data.firstName + " " + data.lastName);
+                Console.WriteLine("Email ID : " + data.email);
+                Console.WriteLine("Mobile Number : " + data.phoneNumber);
+                Console.WriteLine("Address : " + data.address);
+                Console.WriteLine("City : " + data.city);
+                Console.WriteLine("State : " + data.state);
+                Console.WriteLine("Zip : " + data.zip);
+                Console.WriteLine("\n");
+            }
+        }
+     
+            
+        
     }
 
 }
+
