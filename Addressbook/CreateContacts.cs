@@ -378,7 +378,7 @@ namespace Addressbook
         {
             while (true)
             {
-                Console.WriteLine("Enter the option : \n1)sorting by name\n2)sorting by state\n3)sorting by city ");
+                Console.WriteLine("Enter the option : \n1)sorting by zip\n2)sorting by city\n3)sorting by state ");
                 int option = Convert.ToInt32(Console.ReadLine());
                 switch (option)
                 {
