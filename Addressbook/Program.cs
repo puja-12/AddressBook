@@ -15,7 +15,7 @@ namespace Addressbook
             CreateContacts contact1 = new CreateContacts();
             while (true)
             {
-                Console.WriteLine("Enter the option : \\n1)Creatingcontacts\n2)Edit Details\n3)Remove Contacts\n4)Adding multiple contacts\n5)Output Details\n6)Adding Unique Contacts\n7)Display unique contacts\n8)Search Person by city or State\n9Contacts by city using Dictionary\n10)Contacts by State using Dictionary");
+                Console.WriteLine("Enter the option : \\n1)Creatingcontacts\n2)Edit Details\n3)Remove Contacts\n4)Adding multiple contacts\n5)Output Details\n6)Adding Unique Contacts\n7)Display unique contacts\n8)Search Person by city or State\n9Contacts by city using Dictionary\n10)Contacts by State using Dictionary\n11)count Person By city or state ");
                 int option = Convert.ToInt32(Console.ReadLine());
                 switch (option)
                 {
@@ -55,6 +55,9 @@ namespace Addressbook
                     case 10:
                         contact1.ContactsBystate_dictionary();
                         contact1.DisplayContactsByState_dictionary();
+                        break;
+                    case 11:
+                        contact1.CountByCityState();
                         break;
                     default:
                         Console.WriteLine("Please choose correct option");

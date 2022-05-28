@@ -277,11 +277,7 @@ namespace Addressbook
             {
                 Console.WriteLine(e.Message);
             }
-        }
-        /// <summary>
-        /// view Contacts by Cities
-        /// </summary>
-        /// 
+        } 
 
 
         public void ContactsBystate_dictionary()
@@ -344,6 +340,24 @@ namespace Addressbook
                 }
             }
         }
+        public void CountByCityState()
+        {
+            Console.WriteLine("Please enter the name of City or State:");
+            string WantedCityOrState = Console.ReadLine();
+
+            int count = 0;
+            foreach (var data in People)
+            {
+                string actualcity = data.city;
+                string actualState = data.state;
+                if (People.Exists(data => (actualcity == WantedCityOrState || actualState == WantedCityOrState)))
+                {
+                    count++;
+                }
+            }
+            Console.WriteLine("There are {0} Persons in {1}:", count, WantedCityOrState);
+        }
+
     }
 
 }
