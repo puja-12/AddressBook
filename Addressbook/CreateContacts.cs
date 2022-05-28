@@ -374,10 +374,70 @@ namespace Addressbook
                 Console.WriteLine("\n");
             }
         }
-     
-            
-        
+        public void SortingDetailsByVariousEntries()
+        {
+            while (true)
+            {
+                Console.WriteLine("Enter the option : \n1)sorting by name\n2)sorting by state\n3)sorting by city ");
+                int option = Convert.ToInt32(Console.ReadLine());
+                switch (option)
+                {
+                    case 1:
+                        var newDetails = People.OrderBy(x => x.zip);
+
+
+                        foreach (var data in newDetails)
+                        {
+                            Console.WriteLine("Name of the Person : " + data.firstName + " " + data.lastName);
+                            Console.WriteLine("Email ID : " + data.email);
+                            Console.WriteLine("Mobile Number : " + data.phoneNumber);
+                            Console.WriteLine("Address : " + data.address);
+                            Console.WriteLine("City : " + data.city);
+                            Console.WriteLine("State : " + data.state);
+                            Console.WriteLine("Zip : " + data.zip);
+                            Console.WriteLine("\n");
+                        }
+                        break;
+                    case 2:
+                        var newDetails1 = People.OrderBy(x => x.city);
+
+
+                        foreach (var data in newDetails1)
+                        {
+                            Console.WriteLine("Name of the Person : " + data.firstName + " " + data.lastName);
+                            Console.WriteLine("Email ID : " + data.email);
+                            Console.WriteLine("Mobile Number : " + data.phoneNumber);
+                            Console.WriteLine("Address : " + data.address);
+                            Console.WriteLine("City : " + data.city);
+                            Console.WriteLine("State : " + data.state);
+                            Console.WriteLine("Zip : " + data.zip);
+                            Console.WriteLine("\n");
+                        }
+                        break;
+                    case 3:
+                        var newDetails2 = People.OrderBy(x => x.state);
+
+
+                        foreach (var data in newDetails2)
+                        {
+                            Console.WriteLine("Name of the Person : " + data.firstName + " " + data.lastName);
+                            Console.WriteLine("Email ID : " + data.email);
+                            Console.WriteLine("Mobile Number : " + data.phoneNumber);
+                            Console.WriteLine("Address : " + data.address);
+                            Console.WriteLine("City : " + data.city);
+                            Console.WriteLine("State : " + data.state);
+                            Console.WriteLine("Zip : " + data.zip);
+                            Console.WriteLine("\n");
+                        }
+                        break;
+                }
+            }
+        }
     }
 
+
 }
+            
+
+
 
