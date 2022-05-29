@@ -433,10 +433,48 @@ namespace Addressbook
                 }
             }
         }
+        public void ReadFile()
+        {
+            string path = @"C:\bridge\\AddressBook\Addressbook\ReadWriteIOFile.txt";
+            string lines;
+            lines = File.ReadAllText(path);
+            Console.WriteLine(lines);
+
+
+
+        }
+        public void WriteMethod()
+        {
+            string path = @"C:\bridge\\AddressBook\Addressbook\ReadWriteIOFile.txt";
+          
+                using (TextWriter sr = File.AppendText(path))
+                {
+                    foreach (Contact data in People)
+                    {
+                       
+                        Console.WriteLine("Details updated to the .txt file");
+                        sr.WriteLine("FirstName :" + data.firstName.ToString());
+                        sr.WriteLine("lastName :" + data.lastName.ToString());
+                        sr.WriteLine("Email ID :" + data.email.ToString());
+                        sr.WriteLine("Mobile Number :" + data.phoneNumber.ToString());
+                        sr.WriteLine("City  :" + data.city.ToString());
+                        sr.WriteLine("State :" + data.state.ToString());
+                        sr.WriteLine("ZIP :" + data.zip.ToString());
+                    sr.Close();
+                    Console.WriteLine(File.ReadAllText(path));
+
+                    }
+                }
+            }
+
+
+        }
     }
 
 
-}
+
+    
+
             
 
 
