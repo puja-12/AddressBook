@@ -460,8 +460,8 @@ namespace Addressbook
                         sr.WriteLine("City  :" + data.city.ToString());
                         sr.WriteLine("State :" + data.state.ToString());
                         sr.WriteLine("ZIP :" + data.zip.ToString());
-                    sr.Close();
-                    Console.WriteLine(File.ReadAllText(path));
+                        sr.Close();
+                        Console.WriteLine(File.ReadAllText(path));
 
                     }
                 }
