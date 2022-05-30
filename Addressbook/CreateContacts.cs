@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CsvHelper;
+using System.IO;
+using System.Globalization;
 
 namespace Addressbook
 {
@@ -466,9 +469,35 @@ namespace Addressbook
                     }
                 }
             }
-
-
+        public void CsvHandler()
+        {
+            string importFilepath = @"C:\bridge\\AddressBook\Addressbook\import.csv";
+            string exportFilepath = @"C:\bridge\\AddressBook\Addressbook\export.csv";
+            //reading csv file
+            using (var reader = new StreamReader(importFilepath)) 
+            using (var csv=new CsvReader(reader,CultureInfo.InvariantCulture))
+            {
+                foreach(var data in People)
+                {
+                    Console.WriteLine("FirstName :" + data.firstName.ToString());
+                    Console.WriteLine("lastName :" + data.lastName.ToString());
+                    Console.WriteLine("Email ID :" + data.email.ToString());
+                    Console.WriteLine("Mobile Number :" + data.phoneNumber.ToString());
+                    Console.WriteLine("City  :" + data.city.ToString());
+                    Console.WriteLine("State :" + data.state.ToString());
+                    Console.WriteLine("ZIP :" + data.zip.ToString());
+                }
+            }
+            //Writing Csv file
+            /*using (var writer = new StreamWriter(exportFilepath))
+                using(var csvExport=new CsvWriter(writer,CultureInfo.InvariantCulture))
+            {
+                csvExport.WriteRecords(People);
+            }*/
         }
+
+
+    }
     }
 
 

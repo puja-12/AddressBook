@@ -15,7 +15,7 @@ namespace Addressbook
             CreateContacts contact1 = new CreateContacts();
             while (true)
             {
-                Console.WriteLine("Enter the option : \\n1)Creatingcontacts\n2)Edit Details\n3)Remove Contacts\n4)Adding multiple contacts\n5)Output Details\n6)Adding Unique Contacts\n7)Display unique contacts\n8)Search Person by city or State\n9Contacts by city using Dictionary\n10)Contacts by State using Dictionary\n11)count Person By city or state\n12)sorting by name\n13)sorting By various entries\n14)Read From IO File\n15)Updating Address in IO FILe ");
+                Console.WriteLine("Enter the option : \\n1)Creatingcontacts\n2)Edit Details\n3)Remove Contacts\n4)Adding multiple contacts\n5)Output Details\n6)Adding Unique Contacts\n7)Display unique contacts\n8)Search Person by city or State\n9Contacts by city using Dictionary\n10)Contacts by State using Dictionary\n11)count Person By city or state\n12)sorting by name\n13)sorting By various entries\n14)Read From IO File\n15)Updating Address in IO FILe\n16)Read data from csv file and store to another csv file ");
                 int option = Convert.ToInt32(Console.ReadLine());
                 switch (option)
                 {
@@ -70,6 +70,10 @@ namespace Addressbook
                         break;
                     case 15:
                         contact1.WriteMethod();
+                        break;
+                    case 16:
+                        Console.WriteLine("Read data from csv file and store to another csv file");
+                        contact1.CsvHandler();
                         break;
                     default:
                         Console.WriteLine("Please choose correct option");
