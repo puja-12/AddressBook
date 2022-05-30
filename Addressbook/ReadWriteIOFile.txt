@@ -7,3 +7,10 @@ State :NewDelhi
 ZIP :12345
 
 
+FirstName :r
+lastName :r
+Email ID :r
+Mobile Number :r
+City  :r
+State :r
+ZIP :r

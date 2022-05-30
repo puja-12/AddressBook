@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using CsvHelper;
 using System.IO;
 using System.Globalization;
+using Newtonsoft.Json;
+
 
 namespace Addressbook
 {
@@ -449,35 +451,48 @@ namespace Addressbook
         public void WriteMethod()
         {
             string path = @"C:\bridge\\AddressBook\Addressbook\ReadWriteIOFile.txt";
-          
-                using (TextWriter sr = File.AppendText(path))
-                {
-                    foreach (Contact data in People)
-                    {
-                       
-                        Console.WriteLine("Details updated to the .txt file");
-                        sr.WriteLine("FirstName :" + data.firstName.ToString());
-                        sr.WriteLine("lastName :" + data.lastName.ToString());
-                        sr.WriteLine("Email ID :" + data.email.ToString());
-                        sr.WriteLine("Mobile Number :" + data.phoneNumber.ToString());
-                        sr.WriteLine("City  :" + data.city.ToString());
-                        sr.WriteLine("State :" + data.state.ToString());
-                        sr.WriteLine("ZIP :" + data.zip.ToString());
-                        sr.Close();
-                        Console.WriteLine(File.ReadAllText(path));
 
-                    }
+            using (TextWriter sr = File.AppendText(path))
+            {
+                foreach (Contact data in People)
+                {
+
+                    Console.WriteLine("Details updated to the .txt file");
+                    sr.WriteLine("FirstName :" + data.firstName.ToString());
+                    sr.WriteLine("lastName :" + data.lastName.ToString());
+                    sr.WriteLine("Email ID :" + data.email.ToString());
+                    sr.WriteLine("Mobile Number :" + data.phoneNumber.ToString());
+                    sr.WriteLine("City  :" + data.city.ToString());
+                    sr.WriteLine("State :" + data.state.ToString());
+                    sr.WriteLine("ZIP :" + data.zip.ToString());
+                    sr.Close();
+                    Console.WriteLine(File.ReadAllText(path));
+
                 }
             }
-        public void CsvHandler()
+        }
+        public void ReadCsvFile()
         {
             string importFilepath = @"C:\bridge\\AddressBook\Addressbook\import.csv";
-            string exportFilepath = @"C:\bridge\\AddressBook\Addressbook\export.csv";
+            
             //reading csv file
-            using (var reader = new StreamReader(importFilepath)) 
-            using (var csv=new CsvReader(reader,CultureInfo.InvariantCulture))
+            using (var reader = new StreamReader(importFilepath))
+            using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
+
             {
-                foreach(var data in People)
+                string read = File.ReadAllText(importFilepath);
+                Console.WriteLine(read);
+            }
+        }
+        public void WriteCsvFile()
+        {
+            string exportFilepath = @"C:\bridge\\AddressBook\Addressbook\export.csv";
+            using (var writer = new StreamWriter(exportFilepath))
+            using (var csvExport = new CsvWriter(writer, CultureInfo.InvariantCulture))
+            {
+
+
+                foreach (var data in People)
                 {
                     Console.WriteLine("FirstName :" + data.firstName.ToString());
                     Console.WriteLine("lastName :" + data.lastName.ToString());
@@ -486,19 +501,33 @@ namespace Addressbook
                     Console.WriteLine("City  :" + data.city.ToString());
                     Console.WriteLine("State :" + data.state.ToString());
                     Console.WriteLine("ZIP :" + data.zip.ToString());
+
+
+
+                    csvExport.WriteRecords(People);
                 }
             }
-            //Writing Csv file
-            using (var writer = new StreamWriter(exportFilepath))
-                using(var csvExport=new CsvWriter(writer,CultureInfo.InvariantCulture))
-            {
-                csvExport.WriteRecords(People);
-            }
-        }
-
-
     }
-    }
+    /* public void ReadJsonFile()
+     {
+         string json = @"C:\bridge\AddressBook\AddressBook\jsconfig1.json";
+         string jsonData = File.ReadAllText(json);
+         var jsonResult = JsonConvert.DeserializeObject<List<Contact>>(jsonData).ToList();
+         Console.WriteLine("Reading from Json file");
+         foreach (var data in jsonResult)
+         {
+             Console.WriteLine("Name of the Person : " + data.firstName + " " + data.lastName);
+             Console.WriteLine("Email ID : " + data.email);
+             Console.WriteLine("Mobile Number : " + data.phoneNumber);
+             Console.WriteLine("Address : " + data.address);
+             Console.WriteLine("City : " + data.city);
+             Console.WriteLine("State : " + data.state);
+             Console.WriteLine("Zip : " + data.zip);
+             Console.WriteLine("\n");
+         }
+     }*/
+}
+}
 
 
 
