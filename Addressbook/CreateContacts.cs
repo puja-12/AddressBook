@@ -507,9 +507,38 @@ namespace Addressbook
                     csvExport.WriteRecords(People);
                 }
             }
+        }
+
+            public void ReadJsonFile()
+            {
+                string json = @"C:\bridge\\AddressBook\Addressbook\jsconfig1.json";
+                string jsonData = File.ReadAllText(json);
+                var jsonResult = JsonConvert.DeserializeObject<List<Contact>>(jsonData).ToList();           
+                foreach (var data in jsonResult)
+                {
+                    Console.WriteLine("Name of the Person : " + data.firstName + " " + data.lastName);
+                    Console.WriteLine("Email ID : " + data.email);
+                    Console.WriteLine("Mobile Number : " + data.phoneNumber);
+                    Console.WriteLine("Address : " + data.address);
+                    Console.WriteLine("City : " + data.city);
+                    Console.WriteLine("State : " + data.state);
+                    Console.WriteLine("Zip : " + data.zip);
+                    Console.WriteLine("\n");
+                }
+            }
+        public void WriteJsonFile()
+        {
+            string json = @"C:\bridge\\AddressBook\Addressbook\jsconfig1.json";
+            foreach (Contact data in People)
+            {
+                string json1 = JsonConvert.SerializeObject(People);
+                File.WriteAllText(json, json1);
+            }
+            Console.WriteLine(File.ReadAllText(json));
+        }
+
+
     }
-  
-}
 }
 
 
