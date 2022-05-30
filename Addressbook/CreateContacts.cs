@@ -473,21 +473,21 @@ namespace Addressbook
         }
         public void ReadCsvFile()
         {
-            string importFilepath = @"C:\bridge\\AddressBook\Addressbook\import.csv";
+            string Filepath = @"C:\bridge\\AddressBook\Addressbook\export.csv";
             
             //reading csv file
-            using (var reader = new StreamReader(importFilepath))
+            using (var reader = new StreamReader(Filepath))
             using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
 
             {
-                string read = File.ReadAllText(importFilepath);
+                string read = File.ReadAllText(Filepath);
                 Console.WriteLine(read);
             }
         }
         public void WriteCsvFile()
         {
-            string exportFilepath = @"C:\bridge\\AddressBook\Addressbook\export.csv";
-            using (var writer = new StreamWriter(exportFilepath))
+            string Filepath = @"C:\bridge\\AddressBook\Addressbook\export.csv";
+            using (var writer = new StreamWriter(Filepath))
             using (var csvExport = new CsvWriter(writer, CultureInfo.InvariantCulture))
             {
 
@@ -508,24 +508,7 @@ namespace Addressbook
                 }
             }
     }
-    /* public void ReadJsonFile()
-     {
-         string json = @"C:\bridge\AddressBook\AddressBook\jsconfig1.json";
-         string jsonData = File.ReadAllText(json);
-         var jsonResult = JsonConvert.DeserializeObject<List<Contact>>(jsonData).ToList();
-         Console.WriteLine("Reading from Json file");
-         foreach (var data in jsonResult)
-         {
-             Console.WriteLine("Name of the Person : " + data.firstName + " " + data.lastName);
-             Console.WriteLine("Email ID : " + data.email);
-             Console.WriteLine("Mobile Number : " + data.phoneNumber);
-             Console.WriteLine("Address : " + data.address);
-             Console.WriteLine("City : " + data.city);
-             Console.WriteLine("State : " + data.state);
-             Console.WriteLine("Zip : " + data.zip);
-             Console.WriteLine("\n");
-         }
-     }*/
+  
 }
 }
 
