@@ -474,7 +474,7 @@ namespace Addressbook
         public void ReadCsvFile()
         {
             string Filepath = @"C:\bridge\\AddressBook\Addressbook\export.csv";
-            
+
             //reading csv file
             using (var reader = new StreamReader(Filepath))
             using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
@@ -509,35 +509,40 @@ namespace Addressbook
             }
         }
 
-            public void ReadJsonFile()
-            {
-                string json = @"C:\bridge\\AddressBook\Addressbook\jsconfig1.json";
-                string jsonData = File.ReadAllText(json);
-                var jsonResult = JsonConvert.DeserializeObject<List<Contact>>(jsonData).ToList();           
-                foreach (var data in jsonResult)
-                {
-                    Console.WriteLine("Name of the Person : " + data.firstName + " " + data.lastName);
-                    Console.WriteLine("Email ID : " + data.email);
-                    Console.WriteLine("Mobile Number : " + data.phoneNumber);
-                    Console.WriteLine("Address : " + data.address);
-                    Console.WriteLine("City : " + data.city);
-                    Console.WriteLine("State : " + data.state);
-                    Console.WriteLine("Zip : " + data.zip);
-                    Console.WriteLine("\n");
-                }
-            }
-        public void WriteJsonFile()
+        public void ReadJsonFile()
         {
             string json = @"C:\bridge\\AddressBook\Addressbook\jsconfig1.json";
-            foreach (Contact data in People)
+            string jsonData = File.ReadAllText(json);
+            var jsonResult = JsonConvert.DeserializeObject<List<Contact>>(jsonData).ToList();
+            foreach (var data in jsonResult)
             {
-                string json1 = JsonConvert.SerializeObject(People);
-                File.WriteAllText(json, json1);
+                Console.WriteLine("Name of the Person : " + data.firstName + " " + data.lastName);
+                Console.WriteLine("Email ID : " + data.email);
+                Console.WriteLine("Mobile Number : " + data.phoneNumber);
+                Console.WriteLine("Address : " + data.address);
+                Console.WriteLine("City : " + data.city);
+                Console.WriteLine("State : " + data.state);
+                Console.WriteLine("Zip : " + data.zip);
+                Console.WriteLine("\n");
             }
-            Console.WriteLine(File.ReadAllText(json));
         }
+        public void WriteJsonFile()
+        {
+            JsonSerializer serializer = new JsonSerializer();
+            string json = @"C:\bridge\\AddressBook\Addressbook\jsconfig1.json";
+            using (StreamWriter sw = new StreamWriter(json))
+            using (JsonWriter writer = new JsonTextWriter(sw))
+            {
+                foreach (Contact data in People)
+                {
+                    Console.WriteLine("Copied to json file");
+                    serializer.Serialize(writer, data);
+                }
+                
+            }
 
 
+        }
     }
 }
 
